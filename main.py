@@ -160,7 +160,14 @@ class Food:
         )
 
     def draw(self, screen):
-        pygame.draw.rect(screen, RED, (self.position[0], self.position[1], CELL_SIZE, CELL_SIZE))
+        global food_count
+        if food_count < 10:
+            pygame.draw.rect(screen, RED, (self.position[0], self.position[1], CELL_SIZE, CELL_SIZE))
+        else:
+            # 苹果
+            apple = pygame.image.load("Assets/apple.png")
+            apple = pygame.transform.scale(apple, (CELL_SIZE, CELL_SIZE))
+            screen.blit(apple, self.position)
 
 
 # 改变游戏状态
